@@ -1,0 +1,90 @@
+/* Page Styling */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+/* Main Container */
+form,
+ul {
+  width: 350px;
+}
+
+/* Form Styling */
+form {
+  background: white;
+  padding: 20px;
+  border-radius: 10px 10px 0 0;
+  display: flex;
+  gap: 10px;
+}
+
+/* Input Field */
+input[type="text"] {
+  flex: 1;
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  outline: none;
+}
+
+input[type="text"]:focus {
+  border-color: #667eea;
+}
+
+/* Add Button */
+button[type="submit"] {
+  padding: 8px 12px;
+  border: none;
+  background-color: #667eea;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button[type="submit"]:hover {
+  background-color: #5a67d8;
+}
+
+/* Task List */
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 20px;
+  background: white;
+  border-radius: 0 0 10px 10px;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+/* Each Task Item */
+li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f4f4f4;
+  padding: 8px;
+  margin-bottom: 8px;
+  border-radius: 5px;
+}
+
+/* Delete Button */
+.deleteBtn {
+  background: #ff4d4d;
+  border: none;
+  padding: 5px 8px;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.deleteBtn:hover {
+  background: #e60000;
+}
