@@ -2,14 +2,15 @@
 //import reactLogo from './assets/react.svg'
 //import viteLogo from '/vite.svg'
 import './App.css'
-import EventToDo from './EventToDo';
+//import EventToDo from './EventToDo';
 //import Counter from './Counter.jsx';
+import Search from './Search';
 
 function App() {
 
   return (
     <>
-      <EventToDo/>
+      <Search/>
     </>
   )
 }

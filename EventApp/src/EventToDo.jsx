@@ -1,4 +1,4 @@
-//import "./EventToDo.css";
+import "./EventToDo.css";
 export default function EventToDo(){
     // function handleClick(name){
     //     alert(`Button pressed by ${name}`)
@@ -26,6 +26,7 @@ export default function EventToDo(){
         <>
         {/* <h1>Event Hanling</h1>
         <button onClick={()=>handleClick("Yashsvi")}>Click Me</button>  */}
+        <h1> To Do List</h1>
         <form onSubmit={handleSubmit}>
         <input type="text" name="task" placeholder="Add your task here"/>
         <button type="submit">Add Task</button>

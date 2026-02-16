@@ -1,9 +1,9 @@
 import {useState} from 'react'
 export default function Counter(){
-    const [count=0,setCount]=useState();
+    const [count,setCount]=useState(0);  // arr becomes state here
     //var count=0;
     function handleIncrement(){
-        setCount(count=>count+1);
+        setCount(count=>count+1); //callback
         //count++;
         console.log(count);
     }
@@ -26,5 +26,7 @@ export default function Counter(){
     );
 }
 //state is used so that the output is printed on UI
-//import {} - hook
+//import {useState} - hook - user defined
 //.map .filter padhna h
+// setCount-setter
+//do not use = instead use => because we are changing the state

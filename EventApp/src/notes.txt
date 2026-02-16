@@ -1,0 +1,15 @@
+#EVENT TO DO 
+No round bracket for function in handleClick
+{()=>handleClick("KIET")}
+e is the event 
+id id used when we want to delete
+page should not reload we use e.preventDefault
+
+#COUNTER
+state is used so that the output is printed on UI
+import {useState} - hook - user defined
+.map .filter padhna h
+setCount-setter
+Do not use = instead use => because we are changing the state
+#Callback is the function inside the function
+#filter-extracts
