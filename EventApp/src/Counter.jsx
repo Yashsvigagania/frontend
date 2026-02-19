@@ -3,13 +3,16 @@ export default function Counter(){
     const [count,setCount]=useState(0);  // arr becomes state here
     //var count=0;
     function handleIncrement(){
+        if(count==100){
+            alert("Can't increase now");
+        }
         setCount(count=>count+1); //callback
         //count++;
         console.log(count);
     }
     function handleDecrement(){
         if(count==0){
-            alert("Cant decrese now");
+            alert("Can't decrese now");
             return;
         }
         setCount(count=>count-1)
