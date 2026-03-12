@@ -3,52 +3,15 @@ import { useState } from 'react'
 //import viteLogo from './assets/vite.svg'
 //import heroImg from './assets/hero.png'
 import './App.css'
+import { AddItem } from "./AddItem";
+import { DeleteItem } from "./DeleteItem";
+import { TogglePurchased } from "./TogglePurchased";
 
 function App() {
+
   const [items, setItems] = useState([]);
   const [input, setInput] = useState("");
   const [error, setError] = useState("");
-
-  function addItem() {
-
-    const name = input.trim();
-
-    if (name === "") {
-      setError("Item name cannot be empty.");
-      return;
-    }
-
-    const alreadyExists = items.find(
-      (item) => item.name.toLowerCase() === name.toLowerCase()
-    );
-
-    if (alreadyExists) {
-      setError("Item already exists in the list.");
-      return;
-    }
-
-    const newItem = {
-      name: name,
-      purchased: false
-    };
-
-    setItems([...items, newItem]);
-    setInput("");
-    setError("");
-  }
-
-  function deleteItem(index) {
-    const newList = items.filter((item, i) => i !== index);
-    setItems(newList);
-  }
-
-  function togglePurchased(index) {
-    const newList = [...items];
-
-    newList[index].purchased = !newList[index].purchased;
-
-    setItems(newList);
-  }
 
   return (
     <div>
@@ -60,7 +23,13 @@ function App() {
         onChange={(e) => setInput(e.target.value)}
       />
 
-      <button onClick={addItem}>Add Item</button>
+      <button
+        onClick={() =>
+          AddItem(input, items, setItems, setInput, setError)
+        }
+      >
+        Add Item
+      </button>
 
       <p style={{ color: "red" }}>{error}</p>
 
@@ -69,11 +38,15 @@ function App() {
           <li key={index}>
             {item.name} - {item.purchased ? "Purchased" : "Not Purchased"}
 
-            <button onClick={() => togglePurchased(index)}>
+            <button
+              onClick={() => TogglePurchased(index, items, setItems)}
+            >
               {item.purchased ? "Mark Not Purchased" : "Mark Purchased"}
             </button>
 
-            <button onClick={() => deleteItem(index)}>
+            <button
+              onClick={() => DeleteItem(index, items, setItems)}
+            >
               Delete
             </button>
           </li>
@@ -82,5 +55,6 @@ function App() {
     </div>
   );
 }
+
 
 export default App
