@@ -27,6 +27,7 @@ function renderTransactions(transactions) {
     return transactions.map(t => `${t.text} : ${t.amount}`);
 }
 
+
 function deleteTransaction(transactions, id) {
     return transactions.filter(t => t.id !== id);
 }
