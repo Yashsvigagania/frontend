@@ -3,9 +3,9 @@ import { useState } from 'react'
 //import viteLogo from './assets/vite.svg'
 //import heroImg from './assets/hero.png'
 import './App.css'
-import { AddItem } from "./AddItem";
-import { DeleteItem } from "./DeleteItem";
-import { TogglePurchased } from "./TogglePurchased";
+import { AddItem } from "./Components/AddItem";
+import { DeleteItem } from "./Components/DeleteItem";
+import { TogglePurchased } from "./Components/TogglePurchased";
 
 function App() {
 
