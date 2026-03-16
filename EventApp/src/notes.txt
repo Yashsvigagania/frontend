@@ -12,4 +12,5 @@ import {useState} - hook - user defined
 setCount-setter
 Do not use = instead use => because we are changing the state
 #Callback is the function inside the function
+#Promise to remove callback there comes a solution promise
 #filter-extracts
