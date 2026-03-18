@@ -1,24 +1,26 @@
-export default function AddBook(items,input,setItems,setInput,setError){
+export default function AddBook(items, input, setItems, setInput, setError) {
+    const name = input.trim();
 
-    const name=input.trim();
-    if(name===""){
+    if (name === "") {
         setError("Book title cannot be empty");
-    }
-    
-    const exists=items.find(
-        (item)=> item.name.toLowerCase()===name.toLowerCase()
-    );
-    if(exists){
-        setError("Book already exists");
+        return;
     }
 
-    const newItem={
-        name:name,
-        reading:false,
-        completed:false
+    const exists = items.find(
+        (item) => item.name.toLowerCase() === name.toLowerCase()
+    );
+
+    if (exists) {
+        setError("Book already exists");
+        return;
+    }
+
+    const newItem = {
+        name: name,
+        read: false
     };
-    
-    setItems(...items,newItem);
+
+    setItems([...items, newItem]);
     setInput("");
     setError("");
 }
