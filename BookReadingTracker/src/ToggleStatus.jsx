@@ -1,8 +1,7 @@
-export default function ToggleStatus(index,items,setItems){
+export default function ToggleStatus(index, items, setItems) {
+    const newList = [...items];
 
-    const newList=[...items];
-
-    newList[index].read= !newList[index].read;
+    newList[index].read = !newList[index].read;
 
     setItems(newList);
 }
