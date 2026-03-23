@@ -49,5 +49,6 @@ function App() {
     </div>
   );
 }
+instead of fetch write axios.get
 
 export default App
