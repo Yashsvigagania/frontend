@@ -10,8 +10,11 @@ export default function News() {
   const [currentPage, setCurrentPage] = useState(1);
   const itemPerPage = 5;
 
+  const API_KEY = import.meta.env.VITE_NEWS_API_KEY;
+
   function fetchData() {
     setLoading(true);
+    setError("");
 
     fetch(
       "https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=ab079b92c42e4ce18d143df65097866a"
@@ -31,9 +34,9 @@ export default function News() {
     fetchData();
   }, []);
 
-  // Search filter
+  // Search filter (safe)
   const filteredNews = news.filter((item) =>
-    item.title.toLowerCase().includes(search.toLowerCase())
+    (item.title || "").toLowerCase().includes(search.toLowerCase())
   );
 
   // Pagination logic
@@ -42,15 +45,15 @@ export default function News() {
   const currentNews = filteredNews.slice(firstIndex, lastIndex);
   const totalPages = Math.ceil(filteredNews.length / itemPerPage);
 
+  // UI states
   if (loading) return <h1>Loading...</h1>;
   if (error) return <h1>{error}</h1>;
-  if (filteredNews.length === 0) return <h1>No News Found</h1>;
 
   return (
-    <div>
+    <div style={{ padding: "20px" }}>
       <h2>News App</h2>
 
-      {/* Search Input */}
+      {/* Search */}
       <input
         type="text"
         placeholder="Search news..."
@@ -59,33 +62,58 @@ export default function News() {
           setSearch(e.target.value);
           setCurrentPage(1);
         }}
+        style={{ padding: "8px", width: "250px", marginBottom: "20px" }}
       />
 
-      {/* News List */}
-      <ul>
-        {currentNews.map((item, index) => (
-          <li key={index}>{item.title}</li>
-        ))}
-      </ul>
+      {/* No Results */}
+      {filteredNews.length === 0 ? (
+        <h3>No results found for "{search}"</h3>
+      ) : (
+        <>
+          {/* News List */}
+          <ul>
+            {currentNews.map((item) => (
+              <li key={item.url} style={{ marginBottom: "10px" }}>
+                {item.title}
+              </li>
+            ))}
+          </ul>
 
-      {/* Pagination Buttons */}
-      <div>
-        <button
-          onClick={() => setCurrentPage(currentPage - 1)}
-          disabled={currentPage === 1}
-        >
-          Prev
-        </button>
+          {/* Pagination */}
+          <div style={{ marginTop: "20px" }}>
+            <button
+              onClick={() => setCurrentPage((prev) => prev - 1)}
+              disabled={currentPage === 1}
+            >
+              Prev
+            </button>
 
-        <span> Page {currentPage} of {totalPages} </span>
+            {[...Array(totalPages)].map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setCurrentPage(i + 1)}
+                style={{
+                  margin: "5px",
+                  fontWeight: currentPage === i + 1 ? "bold" : "normal",
+                }}
+              >
+                {i + 1}
+              </button>
+            ))}
 
-        <button
-          onClick={() => setCurrentPage(currentPage + 1)}
-          disabled={currentPage === totalPages}
-        >
-          Next
-        </button>
-      </div>
+            <button
+              onClick={() => setCurrentPage((prev) => prev + 1)}
+              disabled={currentPage === totalPages}
+            >
+              Next
+            </button>
+
+            <div style={{ marginTop: "10px" }}>
+              Page {currentPage} of {totalPages}
+            </div>
+          </div>
+        </>
+      )}
     </div>
   );
 }
