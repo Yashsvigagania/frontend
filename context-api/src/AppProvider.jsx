@@ -9,6 +9,7 @@ const AppProvider = ({children}) => {
     const toggleTheme = () => {
         setTheme((prev)=>(prev===" light" ? "dark" : "light"));
     }
+    return(
     <ThemeContext.Provider value={{theme, toggleTheme}}>
         <UserContext.Provider value={{user, setUser}}>
             <LangContext.Provider value={{lang, setLang}}>
@@ -16,5 +17,6 @@ const AppProvider = ({children}) => {
             </LangContext.Provider>
         </UserContext.Provider>
     </ThemeContext.Provider>
+    )
 }
 export default AppProvider;
