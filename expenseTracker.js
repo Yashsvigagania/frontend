@@ -20,6 +20,7 @@ function handleSubmit(text, amount, transactions) {
         amount: amount
     };
 
+
     return [...transactions, newTransaction];
 }
 
