@@ -1,7 +1,15 @@
 import { useState } from 'react';
 import { ThemeContext, UserContext, LangContext } from './context';
+function reducer(state,action){
+  
+}
 
 const AppProvider = ({ children }) => {
+  const initialState={
+    theme:"light",
+    user:(name:"Guest"),
+    lang:"en"
+  };
   const [theme, setTheme] = useState("light");
   const [user, setUser] = useState({ name: "guest" });
   const [lang, setLang] = useState("en");
