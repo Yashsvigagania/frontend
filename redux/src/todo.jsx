@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { addtodo, deletetodo, toggle } from "./action";
-
 const Todo = () => {
   const [text, setText] = useState("");
   const todos = useSelector((state) => state.todo);

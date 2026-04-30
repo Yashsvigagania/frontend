@@ -1,8 +1,8 @@
-import { todo } from "./todo";
+import { Todo } from "./Todo";
 export default function App(){
   return(
     <div>
-      <h1>TODO APP WITH REDUX</h1> <todo/>
+      <h1>TODO APP WITH REDUX</h1> <Todo/>
     </div>
   )
 }
