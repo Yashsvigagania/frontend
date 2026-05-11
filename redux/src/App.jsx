@@ -1,4 +1,4 @@
-import { Todo } from "./Todo";
+import Todo from "./todo"
 export default function App(){
   return(
     <div>
