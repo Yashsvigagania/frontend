@@ -2,6 +2,7 @@ import { ADD_TODO, DELETE_TODO, TOGGLE } from "./action";
 const initialState = {
   todo: []
 };
+
 export const todoReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_TODO:
@@ -16,6 +17,7 @@ export const todoReducer = (state = initialState, action) => {
           }
         ]
       };
+
     case DELETE_TODO:
       return {
         ...state,
@@ -31,6 +33,7 @@ export const todoReducer = (state = initialState, action) => {
             : item
         )
       };
+      
     default:
       return state;
   }
